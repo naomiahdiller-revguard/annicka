@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Annicka — UGC creator making bright, tactile, scroll-stopping content for lifestyle, beauty, playful products, and everyday brands." />
+  <title>Annicka — UGC Creator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#171416;
+      --paper:#fffafc;
+      --pink:#ff5aa7;
+      --pink2:#ffb6d7;
+      --butter:#ffe894;
+      --lav:#d9c7ff;
+      --blue:#bdeaff;
+      --line:#eadde3;
+      --muted:#746970;
+      --card:#ffffff;
+      --shadow: 0 16px 50px rgba(67,32,49,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--ink); background:var(--paper);
+      font-family:"DM Sans",sans-serif; overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+    .wrap{width:min(1180px,calc(100% - 40px));margin:auto}
+    nav{
+      position:sticky;top:0;z-index:20;background:rgba(255,250,252,.82);
+      backdrop-filter:blur(16px);border-bottom:1px solid rgba(234,221,227,.7)
+    }
+    .navin{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-family:"Playfair Display",serif;font-size:25px;font-style:italic}
+    .logo span{color:var(--pink)}
+    .links{display:flex;gap:26px;align-items:center;font-size:14px;font-weight:600}
+    .pill{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;background:var(--ink);color:white}
+    .hero{padding:74px 0 42px;position:relative}
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:999px;filter:blur(1px);z-index:-1}
+    .hero:before{width:300px;height:300px;background:var(--pink2);opacity:.38;right:-90px;top:20px}
+    .hero:after{width:220px;height:220px;background:var(--blue);opacity:.45;left:-100px;bottom:0}
+    .hero-grid{display:grid;grid-template-columns:.94fr 1.06fr;gap:30px;align-items:center;min-height:570px}
+    .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;color:var(--pink)}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(52px,7vw,92px);line-height:.94;letter-spacing:-.045em;margin:18px 0 24px;font-weight:600}
+    h1 em{color:var(--pink);font-variant-ligatures:none;font-feature-settings:"liga" 0,"clig" 0;letter-spacing:-.01em;white-space:nowrap}h1 em .find-f{display:inline;margin-right:.045em}
+    .lead{font-size:19px;line-height:1.65;max-width:620px;color:#4d4449}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{padding:14px 20px;border-radius:999px;border:1px solid var(--ink);font-weight:700;transition:.2s;cursor:pointer;background:transparent}
+    .btn.primary{background:var(--ink);color:#fff}
+    .btn:hover{transform:translateY(-2px)}
+    .micro{margin-top:20px;color:var(--muted);font-size:13px}
+    .phone-stage{position:relative;min-height:580px}
+    .phone{
+      width:310px;height:555px;background:#111;border-radius:44px;padding:10px;box-shadow:0 35px 80px rgba(47,26,37,.22);
+      transform:rotate(3deg);margin:auto;position:relative;z-index:2
+    }
+    .screen{
+      height:100%;border-radius:36px;overflow:hidden;position:relative;
+      background:
+        radial-gradient(circle at 30% 20%,rgba(255,255,255,.9) 0 3%,transparent 4%),
+        linear-gradient(150deg,#ff8fc4 0%,#ffc6e1 30%,#fff1a8 63%,#c6efff 100%);
+    }
+    .screen:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.38))}
+    .fake-product{
+      width:170px;height:170px;border-radius:42% 58% 55% 45% / 50% 45% 55% 50%;
+      position:absolute;left:50%;top:43%;transform:translate(-50%,-50%) rotate(-8deg);
+      background:linear-gradient(145deg,#ff4ea0,#ff9bc8);box-shadow:inset -18px -20px 35px rgba(180,30,100,.15),0 22px 40px rgba(93,25,56,.2)
+    }
+    .spark{position:absolute;font-size:36px;z-index:3}.s1{top:15%;left:12%}.s2{top:28%;right:12%;font-size:25px}.s3{bottom:24%;left:14%;font-size:24px}
+    .overlay{position:absolute;left:22px;right:22px;bottom:25px;color:white;z-index:4}
+    .overlay b{font-size:22px}.overlay p{margin:7px 0 0;font-size:13px;line-height:1.4}
+    .float-card{
+      position:absolute;background:white;border:1px solid var(--line);border-radius:20px;padding:15px 17px;box-shadow:var(--shadow);z-index:4;font-size:13px
+    }
+    .fc1{left:0;top:90px;transform:rotate(-5deg)} .fc2{right:0;bottom:90px;transform:rotate(5deg)}
+    .float-card b{display:block;font-size:16px;margin-bottom:3px}
+    .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:white}
+    .track{display:flex;width:max-content;gap:34px;padding:16px 0;animation:scroll 24s linear infinite;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.12em}
+    .dot{color:var(--pink)}
+    @keyframes scroll{to{transform:translateX(-50%)}}
+    section{padding:94px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:38px}
+    h2{font-family:"Playfair Display",serif;font-size:clamp(38px,5vw,58px);line-height:1;margin:8px 0}
+    .section-head p{max-width:480px;color:var(--muted);line-height:1.6}
+    .work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 24px;align-items:start}
+    .work{min-width:0;text-align:center}
+    .phone{position:relative;width:100%;max-width:245px;aspect-ratio:9/19.5;margin:0 auto;padding:9px;border-radius:38px;background:#171416;box-shadow:0 20px 42px rgba(43,24,34,.16),0 2px 0 rgba(255,255,255,.16) inset}
+    .phone:before{content:"";position:absolute;z-index:3;top:15px;left:50%;transform:translateX(-50%);width:31%;height:18px;border-radius:999px;background:#171416;pointer-events:none}
+    .phone-screen{position:relative;width:100%;height:100%;overflow:hidden;border-radius:30px;background:#0c0b0c}
+    .phone-screen video{width:100%;height:100%;object-fit:cover;display:block;background:#111}
+    .phone-label{max-width:245px;margin:13px auto 0;text-align:left}
+    .phone-label b{display:block;font-size:14px;line-height:1.25}
+    .phone-label span{display:block;margin-top:4px;font-size:11px;line-height:1.4;color:var(--muted)}
+    .work:nth-child(2n) .phone{transform:translateY(14px) rotate(1deg)}
+    .work:nth-child(3n) .phone{transform:rotate(-1deg)}
+    .work:nth-child(5n) .phone{transform:translateY(8px) rotate(.7deg)}
+    .portfolio-note{margin-top:18px;color:var(--muted);font-size:13px}
+
+
+    .hero-visual{
+      position:relative;min-height:540px;display:flex;align-items:center;justify-content:center;isolation:isolate;
+    }
+    .hero-visual:before{
+      content:"";position:absolute;width:82%;aspect-ratio:1;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,182,215,.18),rgba(217,199,255,.08) 55%,transparent 72%);
+      right:-5%;top:4%;z-index:-1;
+    }
+    .hero-portrait-wrap{
+      position:relative;width:min(132%,760px);margin-left:-10%;margin-right:-12%;
+      filter:drop-shadow(0 24px 34px rgba(35,20,28,.10));
+    }
+    .hero-portrait{display:block;width:100%;height:auto;object-fit:contain;}
+    .hero-visual .fc2{left:1%;right:auto;bottom:34px;transform:rotate(-2deg);background:rgba(255,255,255,.90);backdrop-filter:blur(10px)}
+
+
+    .about-photo{
+      width:100%;
+      height:100%;
+      min-height:520px;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      border-radius:inherit;
+    }
+
+    .services{background:var(--ink);color:white}
+    .services .eyebrow{color:var(--pink2)}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:35px}
+    .service{padding:28px;border:1px solid #3c3539;border-radius:24px;background:#211d1f}
+    .service .num{color:var(--pink2);font-size:12px;font-weight:700}.service h3{font-size:20px;margin:34px 0 10px}.service p{color:#c9bec4;line-height:1.6;font-size:14px}
+    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+    .portrait{
+      aspect-ratio:4/5;border-radius:36px;position:relative;overflow:hidden;
+      background:linear-gradient(155deg,var(--pink2),#fff0a8 52%,var(--blue));
+    }
+    .portrait .initial{font-family:"Playfair Display",serif;font-style:italic;font-size:180px;position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.7)}
+    .portrait .note{position:absolute;bottom:20px;left:20px;right:20px;background:white;border-radius:20px;padding:15px;font-size:13px}
+    .about-copy p{font-size:18px;line-height:1.75;color:#4d4449}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.chip{border:1px solid var(--line);background:white;border-radius:999px;padding:10px 13px;font-size:13px}
+    .process{background:#fff}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+    .step{padding:24px;border-top:2px solid var(--ink)}.step small{color:var(--pink);font-weight:700}.step h3{margin:24px 0 8px}.step p{color:var(--muted);font-size:14px;line-height:1.55}
+    .cta{padding:100px 0}
+    .cta-box{border-radius:38px;padding:70px;background:linear-gradient(120deg,#ffb5d6,#ffe99c 55%,#c6efff);text-align:center;position:relative;overflow:hidden}
+    .cta-box h2{font-size:clamp(44px,6vw,74px);max-width:800px;margin:0 auto 20px}.cta-box p{max-width:600px;margin:0 auto 28px;line-height:1.6}
+    footer{padding:28px 0 45px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+    .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .modal{position:fixed;inset:0;background:rgba(20,16,18,.55);z-index:50;display:none;place-items:center;padding:20px}
+    .modal.open{display:grid}.modal-card{background:white;border-radius:28px;padding:30px;width:min(540px,100%);box-shadow:var(--shadow)}
+    .modal-head{display:flex;justify-content:space-between;gap:20px;align-items:start}.close{border:0;background:#f5edf1;width:36px;height:36px;border-radius:50%;cursor:pointer}
+    form{display:grid;gap:12px;margin-top:20px}input,textarea{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:#fffafd}textarea{min-height:120px;resize:vertical}
+    @media(max-width:850px){
+      .links a:not(.pill){display:none}.hero-grid,.about-grid{grid-template-columns:1fr}.hero{padding-top:50px}.hero-grid{gap:18px;min-height:auto}.hero-visual{max-width:680px;min-height:430px;margin:auto}.hero-portrait-wrap{width:min(118%,680px);margin:-12px -9% 0}
+      .work-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 18px}.service-grid,.steps{grid-template-columns:1fr 1fr}.section-head{display:block}.cta-box{padding:48px 24px}
+    }
+    @media(max-width:540px){.wrap{width:min(100% - 26px,1180px)}.work-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 12px}.phone{max-width:190px;border-radius:30px;padding:7px}.phone-screen{border-radius:24px}.phone:before{top:12px;height:14px}.phone-label{max-width:190px}.work:nth-child(n) .phone{transform:none}.hero{padding-bottom:20px}.hero-visual{min-height:330px;margin-top:4px}.hero-portrait-wrap{width:120%;margin-left:-10%;margin-right:-10%}.hero-visual .fc2{display:none}.service-grid,.steps{grid-template-columns:1fr}section{padding:72px 0}}
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+h1 em{white-space:nowrap}
+</style>
+</head>
+<body>
+  <nav>
+    <div class="wrap navin">
+      <a class="logo" href="#">Annicka<span>.</span></a>
+      <div class="links">
+        <a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a>
+        <a class="pill" href="#contact">Work with me</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">UGC creator · lifestyle · beauty · playful products</div>
+          <h1>Content that feels like a <em><span class="find-f">f</span>ind.</em></h1>
+          <p class="lead">Bright, tactile, curiosity-first UGC that makes products feel fun to discover, satisfying to watch, and easy to want.</p>
+          <div class="actions">
+            <a class="btn primary" href="#work">See my work</a>
+            <button class="btn" onclick="openModal()">Get my media kit</button>
+          </div>
+          <div class="micro">Based in Indianapolis · Available for UGC, product demos, unboxings & lifestyle campaigns</div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-portrait-wrap">
+            <img class="hero-portrait" src="assets/annicka-hero-cutout.png" alt="Annicka, UGC creator">
+          </div>
+          <div class="float-card fc2"><b>Visual-first UGC</b>Clean enough for ads.<br>Human enough for FYP.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee"><div class="track">
+      <span>UNBOXINGS</span><span class="dot">✦</span><span>PRODUCT DEMOS</span><span class="dot">✦</span><span>ASMR</span><span class="dot">✦</span><span>LIFESTYLE</span><span class="dot">✦</span><span>HOOKS + CONCEPTS</span><span class="dot">✦</span><span>VOICEOVER</span><span class="dot">✦</span>
+      <span>UNBOXINGS</span><span class="dot">✦</span><span>PRODUCT DEMOS</span><span class="dot">✦</span><span>ASMR</span><span class="dot">✦</span><span>LIFESTYLE</span><span class="dot">✦</span><span>HOOKS + CONCEPTS</span><span class="dot">✦</span><span>VOICEOVER</span><span class="dot">✦</span>
+    </div></div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Selected work</div><h2>Made to stop the scroll.</h2></div>
+          <p>Real organic content built around product discovery, satisfying details, tactile demos, bright lifestyle moments, and visual hooks that feel native to the feed.</p>
+        </div>
+        <div class="work-grid">
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/outdoor-unboxing.jpg"><source src="assets/outdoor-unboxing.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Outdoor unboxing</b><span>Unboxing · product reaction · tactile demo</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/beauty-basket.jpg"><source src="assets/beauty-basket.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Beauty basket find</b><span>Beauty · retail discovery · product selection</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/poolside-minis.jpg"><source src="assets/poolside-minis.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Tiny details, poolside</b><span>Lifestyle · collectibles · macro product shots</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/squish-demo.jpg"><source src="assets/squish-demo.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Texture does the talking</b><span>Tactile demo · sensory · outdoor lifestyle</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/poptart-squishy.jpg"><source src="assets/poptart-squishy.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Satisfying product close-up</b><span>ASMR · macro detail · aesthetic B-roll</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/lipgloss-find.jpg"><source src="assets/lipgloss-find.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>The cutest little beauty find</b><span>Beauty · discovery hook · retail UGC</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/organic-07.jpg"><source src="assets/organic-07.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Organic social 07</b><span>Product discovery · vertical UGC</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/organic-08.jpg"><source src="assets/organic-08.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Organic social 08</b><span>Organic creative · native social</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/organic-09.jpg"><source src="assets/organic-09.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Organic social 09</b><span>Lifestyle · product-focused UGC</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/organic-10.jpg"><source src="assets/organic-10.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Organic social 10</b><span>Short-form · visual hook</span></div></article>
+          <article class="work"><div class="phone"><div class="phone-screen"><video controls playsinline preload="metadata" poster="assets/organic-11.jpg"><source src="assets/organic-11.mp4" type="video/mp4"></video></div></div><div class="phone-label"><b>Organic social 11</b><span>Organic social · vertical creative</span></div></article>
+        </div>
+        <p class="portfolio-note">11 pieces of organic social work · filmed and edited by Annicka</p>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="eyebrow">What I create</div><h2>Creative that doesn't feel like an ad.</h2>
+        <div class="service-grid">
+          <div class="service"><span class="num">01</span><h3>Organic UGC</h3><p>Native-feeling TikToks and Reels with conversational hooks, product discovery, demos, reactions, routines and lifestyle integration.</p></div>
+          <div class="service"><span class="num">02</span><h3>Paid Social Creative</h3><p>Conversion-minded concepts with hook variations, clear product value, natural CTAs and footage your team can test across campaigns.</p></div>
+          <div class="service"><span class="num">03</span><h3>Product B-roll</h3><p>Bright, clean vertical footage: macro details, hands-in-frame demos, textures, packaging, outdoor moments and satisfying product shots.</p></div>
+          <div class="service"><span class="num">04</span><h3>Unboxings + Hauls</h3><p>Discovery-driven content that makes the viewer feel like they're opening the package with me—not watching a scripted commercial.</p></div>
+          <div class="service"><span class="num">05</span><h3>ASMR + Tactile</h3><p>Clicks, squishes, pours, peels, textures and tiny details. Ideal for sensory products and anything that needs to be seen up close.</p></div>
+          <div class="service"><span class="num">06</span><h3>Concepting</h3><p>Hooks, angles and repeatable content ideas shaped around what makes the product interesting enough to stop for in the first place.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-visual"><img class="about-photo" src="assets/annicka-about.png" alt="Annicka, creator"></div>
+        <div class="about-copy">
+          <div class="eyebrow">Hi, I'm Annicka</div><h2>Curious by nature. Creative on purpose.</h2>
+          <p>I'm an engineering student and creator who notices the tiny things that make a product interesting—the click, the texture, the packaging, the weirdly satisfying detail you immediately want to show somebody else.</p>
+          <p>My style is bright and playful without feeling overly polished. I like content with movement, personality and a little curiosity built in, so the product feels discovered rather than presented.</p>
+          <div class="chips"><span class="chip">Playful lifestyle</span><span class="chip">Beauty + accessories</span><span class="chip">Tactile / sensory</span><span class="chip">Apps + tech</span><span class="chip">Student life</span><span class="chip">Outdoor lifestyle</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="wrap">
+        <div class="section-head"><div><div class="eyebrow">The process</div><h2>Easy to work with.</h2></div><p>Clear communication, intentional concepts, and deliverables designed to actually be useful to your brand.</p></div>
+        <div class="steps">
+          <div class="step"><small>01</small><h3>Brief</h3><p>You send the product, goals, audience, deliverables and any must-haves.</p></div>
+          <div class="step"><small>02</small><h3>Concept</h3><p>I build the hook, angle and visual direction around what makes the product compelling.</p></div>
+          <div class="step"><small>03</small><h3>Create</h3><p>I film and edit native vertical content with clean visuals and natural pacing.</p></div>
+          <div class="step"><small>04</small><h3>Deliver</h3><p>You receive organized final assets, plus variations when included in the package.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="wrap">
+        <div class="cta-box">
+          <div class="eyebrow">Have a product I'd obsess over?</div>
+          <h2>Let's make people want to try it.</h2>
+          <p>Tell me what you're launching, what you need, and where the content will live. I'll take it from there.</p>
+          <button class="btn primary" onclick="openModal()">Start a project →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap foot"><div>© 2026 Annicka · UGC Creator</div><div>TikTok / Instagram · @annickalately</div></div></footer>
+
+  <div class="modal" id="modal" onclick="if(event.target===this) closeModal()">
+    <div class="modal-card">
+      <div class="modal-head"><div><div class="eyebrow">Let's work together</div><h3 style="font-size:28px;margin:8px 0">Tell me about your project.</h3></div><button class="close" onclick="closeModal()">×</button></div>
+      <form onsubmit="demoSubmit(event)">
+        <input required placeholder="Your name / brand">
+        <input required type="email" placeholder="Email">
+        <input placeholder="What deliverables do you need?">
+        <textarea placeholder="Tell me about the product, campaign, timeline, usage, or anything else I should know."></textarea>
+        <button class="btn primary" type="submit">Send inquiry</button>
+        <small style="color:#746970">Demo form — connect this to Formspree, Tally, your email platform, or a custom backend before publishing.</small>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal(){document.getElementById('modal').classList.add('open')}
+    function closeModal(){document.getElementById('modal').classList.remove('open')}
+    function demoSubmit(e){e.preventDefault();alert("Looks good! This is a demo form. Connect it to your preferred form service before publishing.");closeModal()}
+  </script>
+</body>
+</html>
